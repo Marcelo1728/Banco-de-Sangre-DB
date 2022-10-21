@@ -18,3 +18,25 @@ CREATE TABLE sexo
 	descripcion CHAR(1) not null,
 	CONSTRAINT CK__sexo__descripcion CHECK (descripcion in ('F','M')),
 );
+
+create table tipo_hemocomponente
+(
+	id_hemocomponente int identity primary key,
+	descripcion varchar(15),
+);
+
+create table donante 
+(
+	id_donante int identity primary key,
+	dni char(8) unique not null,
+	nombre varchar(20) not null,
+	apellido varchar(20) not null,
+	id_sexo int not null,
+	fecha_nacimiento date not null,
+	telefono varchar(20),
+	direccion varchar(40),
+	tipo_sangre_id int not null,
+	constraint UQ__donante_dni unique (dni),
+	constraint FK__donante__sexo foreign key (id_sexo) references sexo (id_sexo),
+	constraint FK__donante__tipo_sangre foreign key (tipo_sangre_id) references tipo_sangre (tipo_sangre_id)
+);
