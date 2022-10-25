@@ -27,7 +27,7 @@ create table tipo_hemocomponente
 
 create table donante 
 (
-	id_donante int identity primary key,
+	id_donante int primary key,
 	dni char(8) unique not null,
 	nombre varchar(20) not null,
 	apellido varchar(20) not null,
@@ -58,7 +58,7 @@ create table paciente
 
 create table bioanalista 
 (
-	id_bioanalista int identity primary key,
+	id_bioanalista int primary key,
 	dni char(8) unique not null,
 	nombre varchar(20) not null,
 	apellido varchar(20) not null,
